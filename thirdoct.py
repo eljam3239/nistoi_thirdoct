@@ -25,4 +25,8 @@ def third_oct(fs, N_fft, numBands, mn):
     #this might need to be like m(f.shape) -- we want the size of this largest dimension?
     A = np.zeros(numBands, f.max())
 
+    #length(cf) in python?
+    for i in range(1, cf.max):
+
+
 
