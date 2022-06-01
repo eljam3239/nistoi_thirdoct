@@ -27,6 +27,26 @@ def third_oct(fs, N_fft, numBands, mn):
 
     #length(cf) in python?
     for i in range(1, cf.max):
+        a = min(np.power(2, f-fl[i]))
+        b = f.index(a)
+        fl[i]=f[b]
+        fl_ii = b
+
+        a = min(np.power(2, f-fr[i]))
+        b = f.index(a)
+        fr[i] = f[b]
+        fr_ii = b
+        #defs wrong
+        A[i, fl_ii:(fr_ii-1)] = 1
+
+    rnk = np.sum(A, 2)
+    #last?
+    numBands = np.where()
+    A = np.linspace[1:A:numBands]
+    cf = np.linspace[1:cf:numBands]
+
+
+    
 
 
 
