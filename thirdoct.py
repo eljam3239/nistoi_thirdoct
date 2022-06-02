@@ -27,6 +27,20 @@ def third_oct(fs, N_fft, numBands, mn):
     #f               = f(1:(N_fft/2+1));
     f = f[:N_fft//2+1]
     #print("\n", f, f.shape)
+    #k               = 0:(numBands-1); --> generating an array
+    k = np.arange(0, numBands)
+    #print(k)
+    #cf              = 2.^(k/3)*mn;
+    cf = 2**(k/3)*mn
+    #print(cf)
+    #fl              = sqrt((2.^(k/3)*mn).*2.^((k-1)/3)*mn);
+    fl = math.sqrt(np.dot((2**(k/3)*mn),(2**((k-1)/3)*mn)))
+    #print(fl)
+    #fr              = sqrt((2.^(k/3)*mn).*2.^((k+1)/3)*mn);
+    fr = math.sqrt(np.dot((2**(k/3)*mn),(2**((k+1)/3)*mn)))
+    #A               = zeros(numBands, length(f));
+    A = np.zeros((numBands, max(f.shape)))
+    print(A)
     """
     k = np.mgrid[0:numBands-1]
     cf = np.power(2, k/3*mn)
