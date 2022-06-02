@@ -9,11 +9,15 @@ def read_test_file(test_file):
         cf = np.transpose(data['cf'][()])
     return A, cf
 
-A, cf = read_test_file('fs_8000_Nfft_256_numBands_12_mn_120.h5')
+A, cf = read_test_file('PYTHON_fs_8000_Nfft_256_numBands_12_mn_120.h5')
 
 print(A)
 print(cf)
 
+
+"""
+
+#Used to generate a test H5 file that represents the h5 files that will be written by our python version of third octave
 
 fs, N_fft, numBands, mn = 8000, 256, 12, 120
 
@@ -23,3 +27,5 @@ hf = h5py.File(file_name, 'w')
 hf.create_dataset('A', data = A)
 hf.create_dataset('cf', data = cf)
 hf.close()
+"""
+
