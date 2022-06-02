@@ -58,49 +58,11 @@ def third_oct(fs, N_fft, numBands, mn):
         #A(i,fl_ii:(fr_ii-1))	= 1;
         A[i, fl_ii:(fr_ii-1)]=1
         #print(A)
-    rnk = np.sum(A,1)  
-    print(rnk)
-
-        
-        #temp = f-fl[i]
-        #b = np.where(temp == np.amin(temp))
-        #print(b[0])
-        #print(b)
-        
-        #b = a.columns
-        #print(b)
-
-
-    """
-    k = np.mgrid[0:numBands-1]
-    cf = np.power(2, k/3*mn)
-    #sqrt of a dot product I beleive
-    fl = math.sqrt(np.dot(np.power(2, k/3*mn), np.power(2, (k-1)/3*mn)))
-    fr = math.sqrt(np.dot(np.power(2, k/3*mn), np.power(2, (k+1)/3*mn)))
-
-    #this might need to be like m(f.shape) -- we want the size of this largest dimension?
-    A = np.zeros(numBands, f.max())
-
-    #length(cf) in python?
-    for i in range(1, cf.max):
-        a = min(np.power(2, f-fl[i]))
-        b = f.index(a)
-        fl[i]=f[b]
-        fl_ii = b
-
-        a = min(np.power(2, f-fr[i]))
-        b = f.index(a)
-        fr[i] = f[b]
-        fr_ii = b
-        #defs wrong
-        A[i, fl_ii:(fr_ii-1)] = 1
-
-    rnk = np.sum(A, 2)
-    #last?
-    numBands = np.where()
-    A = np.linspace[1:A:numBands]
-    cf = np.linspace[1:cf:numBands]
-    """
-    return 0
-
+    rnk = np.sum(A,1)
+    
+    numBands = np.where(np.logical_and((rnk[1:] - rnk[0:-1])>=0, rnk[1:] != 0))[0][-1]+1
+    #print(numBands)
+    A = A[0:numBands+1, :]
+    cf = cf[0:numBands+1]
+    
 third_oct(fs, N_fft, numBands, mn)
