@@ -23,7 +23,7 @@ mn       = 120
 
 def third_oct(fs, N_fft, numBands, mn):
     f = np.linspace(0, fs, N_fft+1)
-    #print(f.shape)
+    #print(f)
     #f               = f(1:(N_fft/2+1));
     f = f[:N_fft//2+1]
     #print("\n", f, f.shape)
@@ -46,8 +46,26 @@ def third_oct(fs, N_fft, numBands, mn):
     #print(A)
 
     for i in range(0, max(cf.shape)):
-        a = min((f-fl[i])**2)
-        print(type(a))
+        a= min((f-fl[i])**2)
+        b = np.argmin((f-fl[i])**2, axis =0)
+        fl[i] = f[b]
+        fl_ii = b
+
+        a= min((f-fr[i])**2)
+        b = np.argmin((f-fr[i])**2, axis =0)
+        fr[i] = f[b]
+        fr_ii = b
+        #A(i,fl_ii:(fr_ii-1))	= 1;
+        A[i, fl_ii:(fr_ii-1)]=1
+        #print(A)
+    rnk = np.sum(A,1)  
+    print(rnk)
+
+        
+        #temp = f-fl[i]
+        #b = np.where(temp == np.amin(temp))
+        #print(b[0])
+        #print(b)
         
         #b = a.columns
         #print(b)
