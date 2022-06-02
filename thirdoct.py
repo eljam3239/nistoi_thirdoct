@@ -34,13 +34,25 @@ def third_oct(fs, N_fft, numBands, mn):
     cf = 2**(k/3)*mn
     #print(cf)
     #fl              = sqrt((2.^(k/3)*mn).*2.^((k-1)/3)*mn);
-    fl = math.sqrt(np.dot((2**(k/3)*mn),(2**((k-1)/3)*mn)))
+    #fl = math.sqrt(np.dot((2**(k/3)*mn),(2**((k-1)/3)*mn))) --> outputs 2227.4722913822884
+    #fl = np.sqrt((2**(k/3)*mn)@(2**((k-1)/3)*mn))
+    #fl = np.sqrt(np.multiply(np.power(2, k/3)*mn), np.power(2, ((k-1)/3)*mn))
+    fl = np.sqrt(np.multiply(np.power(2, k/3)*mn, np.power(2, (k-1)/3)*mn))
     #print(fl)
     #fr              = sqrt((2.^(k/3)*mn).*2.^((k+1)/3)*mn);
-    fr = math.sqrt(np.dot((2**(k/3)*mn),(2**((k+1)/3)*mn)))
+    fr = np.sqrt(np.multiply(np.power(2, k/3)*mn, np.power(2, (k+1)/3)*mn))
     #A               = zeros(numBands, length(f));
     A = np.zeros((numBands, max(f.shape)))
-    print(A)
+    #print(A)
+
+    for i in range(0, max(cf.shape)):
+        a = min((f-fl[i])**2)
+        print(type(a))
+        
+        #b = a.columns
+        #print(b)
+
+
     """
     k = np.mgrid[0:numBands-1]
     cf = np.power(2, k/3*mn)
