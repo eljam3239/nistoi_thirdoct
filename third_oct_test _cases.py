@@ -4,7 +4,7 @@ import numpy as np
 
 #this file will be used to generate the test cases.
 
-
+Python_test_files_dir = 'py_test_dir'
 
 for fs in [8000, 16000, 41000]:
     for N_fft in [128, 256, 512]:
@@ -16,7 +16,7 @@ for fs in [8000, 16000, 41000]:
 
 def write_test_file(file_name, A, cf):
     file_name = file_name+'.h5'
-    with h5py.File(home/eljam3239/repos/nistoi_thirdoct/python_test_files/file_name, 'w') as f:
+    with h5py.File(Python_test_files_dir/file_name, 'w') as f:
         f.create_dataset('A', data = A)
         f.create_dataset('cf', data = cf)
 
