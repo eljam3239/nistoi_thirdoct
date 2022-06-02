@@ -1,5 +1,7 @@
 import numpy as np
 import math
+from scipy import io, integrate, linalg, signal
+from scipy.sparse.linalg import eigs
 """
 Computes third octave band matrix inptuts
 Inputs: 
@@ -11,11 +13,21 @@ Outputs:
     A: octave band matrix
     CF: center frequencies
 """
+
+fs       = 8000
+N_fft    = 256
+numBands = 12
+mn       = 120
+
+
+
 def third_oct(fs, N_fft, numBands, mn):
-    #is FS stop or is N_fft+1 stop?
     f = np.linspace(0, fs, N_fft+1)
-    #f*1:n is the same as 1:f:n, right?
-    f =np.mgrid[1: f:(N_fft/2)+1]
+    #print(f.shape)
+    #f               = f(1:(N_fft/2+1));
+    f = f[:N_fft//2+1]
+    #print("\n", f, f.shape)
+    """
     k = np.mgrid[0:numBands-1]
     cf = np.power(2, k/3*mn)
     #sqrt of a dot product I beleive
@@ -44,9 +56,7 @@ def third_oct(fs, N_fft, numBands, mn):
     numBands = np.where()
     A = np.linspace[1:A:numBands]
     cf = np.linspace[1:cf:numBands]
+    """
+    return 0
 
-
-    
-
-
-
+third_oct(fs, N_fft, numBands, mn)
