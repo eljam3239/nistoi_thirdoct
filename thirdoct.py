@@ -50,21 +50,24 @@ def third_oct(fs, N_fft, numBands, mn):
         b = np.argmin((f-fl[i])**2, axis =0)
         fl[i] = f[b]
         fl_ii = b
-
+        #print(fl_ii)
         a= min((f-fr[i])**2)
+        #print(a)
         b = np.argmin((f-fr[i])**2, axis =0)
+        #print(b)
         fr[i] = f[b]
         fr_ii = b
         #A(i,fl_ii:(fr_ii-1))	= 1;
-        A[i, fl_ii:(fr_ii-1)]=1
-        #print(A)
+        A[i, fl_ii:(fr_ii)]=1 #got rid of -1
+        print(A)
+    #print(A)
     rnk = np.sum(A,1)
-    
+    #print(rnk)
     numBands = np.where(np.logical_and((rnk[1:] - rnk[0:-1])>=0, rnk[1:] != 0))[0][-1]+1
     #print(numBands)
     A = A[0:numBands+1, :]
     cf = cf[0:numBands+1]
-
+    #print(cf)
     return A, cf
     
 third_oct(fs, N_fft, numBands, mn)

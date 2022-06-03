@@ -7,7 +7,7 @@ import shutil
 #this file will be used to generate the test cases.
 
 Python_test_files_dir = 'py_test_dir'
-#mkdir(Python_test_files_dir)
+mkdir(Python_test_files_dir)
 
 def write_test_file(file_name, A, cf):
     file_name = file_name+'.h5'
