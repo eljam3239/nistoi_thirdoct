@@ -14,10 +14,10 @@ Outputs:
     CF: center frequencies
 """
 
-fs       = 8000
-N_fft    = 256
-numBands = 12
-mn       = 120
+fs       = 41000
+N_fft    = 128
+numBands = 8
+mn       = 150
 
 
 
@@ -64,5 +64,7 @@ def third_oct(fs, N_fft, numBands, mn):
     #print(numBands)
     A = A[0:numBands+1, :]
     cf = cf[0:numBands+1]
+
+    return A, cf
     
 third_oct(fs, N_fft, numBands, mn)
