@@ -59,7 +59,7 @@ def third_oct(fs, N_fft, numBands, mn):
         fr_ii = b
         #A(i,fl_ii:(fr_ii-1))	= 1;
         A[i, fl_ii:(fr_ii)]=1 #got rid of -1
-        print(A)
+        #print(A)
     #print(A)
     rnk = np.sum(A,1)
     #print(rnk)
